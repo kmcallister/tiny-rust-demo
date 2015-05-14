@@ -6,13 +6,13 @@ for d in rustc git cargo ar ld objcopy nasm; do
     which $d >/dev/null || (echo "Can't find $d, needed to build"; exit 1)
 done
 
-printf "Tested on rustc 1.0.0-dev (44a287e6e 2015-01-08 17:03:40 -0800)\nYou have  "
+printf "Tested on rustc 1.1.0-dev (435622028 2015-05-04)\nYou have  "
 rustc --version
 echo
 
 if [ ! -d syscall.rs ]; then
     git clone https://github.com/kmcallister/syscall.rs
-    (cd syscall.rs && cargo build)
+    (cd syscall.rs && cargo build --release)
     echo
 fi
 
@@ -20,7 +20,7 @@ set -x
 
 rustc tinyrust.rs \
     -O -C no-stack-check -C relocation-model=static \
-    -L syscall.rs/target
+    -L syscall.rs/target/release
 
 ar x libtinyrust.rlib tinyrust.o
 

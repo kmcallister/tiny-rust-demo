@@ -1,5 +1,5 @@
 #![crate_type="rlib"]
-#![allow(unstable)]
+#![feature(core)]
 
 #[macro_use] extern crate syscall;
 
