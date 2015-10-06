@@ -1,5 +1,5 @@
 #![crate_type="rlib"]
-#![feature(core)]
+#![feature(raw, core_intrinsics)]
 
 #[macro_use] extern crate syscall;
 
