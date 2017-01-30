@@ -6,7 +6,7 @@
 
 ehdr:
     db  0x7f, "ELF"  ; magic
-    db  2, 1, 1, 0   ; 64-bits, little endian, version 1
+    db  2, 1, 1, 9   ; 64-bits, little endian, version 9(FreeBSD, linux loader ignores this)
 
     ; This padding is a perfect place to put a string constant!
     db "Hello!", 0x0A, 0
