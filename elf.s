@@ -20,13 +20,11 @@ ehdr:
     dd  0            ; e_flags
     dw  ehdrsize     ; e_ehsize
     dw  phdrsize     ; e_phentsize
-    dw  1            ; e_phnum
-    dw  0, 0, 0      ; e_sh*
 
 ehdrsize  equ  $ - ehdr
 
 phdr:
-    dd  1            ; p_type = loadable program segment
+    dd  1            ; p_type = loadable program segment & (e_phnum + e_sh*)
     dd  7            ; p_flags = rwx
     dq  0            ; p_offset
     dq  $$, $$       ; p_vaddr, p_paddr
