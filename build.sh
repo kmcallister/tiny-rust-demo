@@ -30,7 +30,7 @@ echo
 ld --gc-sections -e main -T script.ld -o payload tinyrust.0.o
 objcopy -j combined -O binary payload payload.bin
 
-ENTRY=$(nm -f posix payload | grep '^main ' | awk '{print $3}')
+ENTRY=$(nm --format=posix payload | grep '^main ' | awk '{print $3}')
 nasm -f bin -o tinyrust -D entry=0x$ENTRY elf.s
 
 chmod +x tinyrust
