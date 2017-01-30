@@ -6,7 +6,7 @@ for d in rustc git cargo ar ld objcopy nasm hexdump; do
     which $d >/dev/null || (echo "Can't find $d, needed to build"; exit 1)
 done
 
-printf "Tested on rustc 1.16.0-nightly (df8debf6d 2017-01-25)"
+printf "Tested on rustc 1.16.0-nightly (df8debf6d 2017-01-25)\n You have  "
 rustc --version
 echo
 
