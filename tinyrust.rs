@@ -23,7 +23,7 @@ pub fn main() {
     // Make a Rust value representing the string constant we stashed
     // in the ELF file header.
     let message: &'static [u8] = unsafe {
-        mem::transmute(slice::from_raw_parts(0x00400000 as *const u8, 7))
+        mem::transmute(slice::from_raw_parts(0x00400008 as *const u8, 7))
     };
 
     write(1, message);
