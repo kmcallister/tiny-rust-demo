@@ -1,9 +1,9 @@
 #![crate_type="rlib"]
-#![feature(raw, core_intrinsics)]
+#![feature(core_intrinsics)]
 
-#[macro_use] extern crate syscall;
+#[macro_use] extern crate sc;
 
-use std::{mem, raw, intrinsics};
+use std::{mem, slice, intrinsics};
 
 fn exit(n: usize) -> ! {
     unsafe {
@@ -23,10 +23,7 @@ pub fn main() {
     // Make a Rust value representing the string constant we stashed
     // in the ELF file header.
     let message: &'static [u8] = unsafe {
-        mem::transmute(raw::Slice {
-            data: 0x00400008 as *const u8,
-            len: 7,
-        })
+        mem::transmute(slice::from_raw_parts(0x00400008 as *const u8, 7))
     };
 
     write(1, message);
