@@ -6,7 +6,7 @@ for d in rustc git cargo ar ld objcopy nasm hexdump; do
     which $d >/dev/null || (echo "Can't find $d, needed to build"; exit 1)
 done
 
-printf "Tested on rustc 1.16.0-nightly (df8debf6d 2017-01-25)\n You have  "
+printf "Tested on rustc 1.30.0-nightly (f8d34596f 2018-08-30)\n You have  "
 rustc --version
 echo
 
@@ -22,12 +22,14 @@ rustc tinyrust.rs \
     -O -C relocation-model=static \
     -L syscall.rs/target/release
 
-ar x libtinyrust.rlib tinyrust.0.o
+# tinyrust.tinyrust.3a1fbbbh-cgu.0.rcgu.o
+OBJECT=$(ar t libtinyrust.rlib | grep '.o$')
+ar x libtinyrust.rlib "$OBJECT"
 
-objdump -dr tinyrust.0.o
+objdump -dr "$OBJECT"
 echo
 
-ld --gc-sections -e main -T script.ld -o payload tinyrust.0.o
+ld --gc-sections -e main -T script.ld -o payload "$OBJECT"
 objcopy -j combined -O binary payload payload.bin
 
 ENTRY=$(nm --format=posix payload | grep '^main ' | awk '{print $3}')

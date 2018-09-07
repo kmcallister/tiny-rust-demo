@@ -3,5 +3,5 @@
 /payload.bin
 /tinyrust
 /tinyrust.ll
-/tinyrust.0.o
+/*.o
 /libtinyrust.rlib
