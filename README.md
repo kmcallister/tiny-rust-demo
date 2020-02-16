@@ -59,3 +59,7 @@ Disassembly of section .text.main:
 $ ./tinyrust
 Hello!
 ```
+
+# See also
+
+* [A very synthetic, but very small hello world on Go (99 bytes, i386)](https://github.com/xaionaro-go/tinyhelloworld).
