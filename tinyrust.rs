@@ -1,4 +1,3 @@
-#![crate_type="rlib"]
 #![no_std]
 
 #[macro_use] extern crate sc;

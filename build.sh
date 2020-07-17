@@ -19,7 +19,7 @@ fi
 
 set -x
 
-rustc tinyrust.rs \
+rustc tinyrust.rs --crate-type lib \
     -O -C relocation-model=static \
     -L syscall.rs/target/release
 
