@@ -3,9 +3,8 @@
 Requires nightly Rust because it uses the `sc` crate to make direct
 system calls.
 
-`elf.s` contains a custom ELF header, but no instructions.  All of the machine
-code comes out of `rustc`.  (Although all of the instructions that survive
-optimization *went in* as inline assembly.)
+`elf.s` contains a custom ELF header, but no instructions.
+All of the machine code comes out of `rustc`. (Although all except one of the instructions that survive optimization *went in* as inline assembly.)
 
 ```
 $ ./build.sh
