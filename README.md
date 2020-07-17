@@ -8,11 +8,11 @@ All of the machine code comes out of `rustc`. (Although all except one of the in
 
 ```
 $ ./build.sh
-Tested on rustc 1.30.0-nightly (f8d34596f 2018-08-30)
-You have  rustc 1.30.0-nightly (f8d34596f 2018-08-30)
+Tested on rustc 1.46.0-nightly (346aec9b0 2020-07-11)
+You have  rustc 1.46.0-nightly (346aec9b0 2020-07-11)
 
 Cloning into 'syscall.rs'...
-   Compiling sc v0.2.2 (file:///home/keegan/tiny-rust-demo/syscall.rs)      
+   Compiling sc v0.2.3 (file:///home/tormol/p/rust/tiny-rust-executable/syscall.rs)
 
 + rustc tinyrust.rs -O -C relocation-model=static -L syscall.rs/target/release
 ++ grep '.o$'

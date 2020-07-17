@@ -6,12 +6,13 @@ for d in rustc git cargo ar ld objcopy nasm hexdump; do
     which $d >/dev/null || (echo "Can't find $d, needed to build"; exit 1)
 done
 
-printf "Tested on rustc 1.30.0-nightly (f8d34596f 2018-08-30)\n You have  "
+printf "Tested on rustc 1.46.0-nightly (346aec9b0 2020-07-11)\nYou have  "
 rustc --version
 echo
 
 if [ ! -d syscall.rs ]; then
-    git clone https://github.com/japaric/syscall.rs
+    git clone --depth=1 https://github.com/AgustinCB/syscall.rs
+    # a fork of https://github.com/japaric/syscall.rs with updated asm feature flag
     (cd syscall.rs && cargo build --release)
     echo
 fi
