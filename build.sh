@@ -20,8 +20,10 @@ fi
 set -x
 
 rustc tinyrust.rs --crate-type lib \
-    -O -C relocation-model=static \
-    -L syscall.rs/target/release
+    -L syscall.rs/target/release \
+    -C relocation-model=static \
+    -O \
+    -C opt-level=z
 
 # tinyrust.tinyrust.3a1fbbbh-cgu.0.rcgu.o
 OBJECT=$(ar t libtinyrust.rlib | grep '.o$')
