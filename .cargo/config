@@ -1,0 +1,3 @@
+[build]
+rustflags = ["-C", "relocation-model=static"]
+incremental = false

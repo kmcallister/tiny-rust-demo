@@ -9,15 +9,18 @@ system calls.
 All of the machine code comes out of `rustc`.
 (While most of the operations originate from inline assembly, LLVM replaces the instructions with more compact ones!)
 
-```
+```sh
 $ ./build.sh
 Tested on rustc 1.46.0-nightly (346aec9b0 2020-07-11)
 You have  rustc 1.46.0-nightly (346aec9b0 2020-07-11)
 
-Cloning into 'syscall.rs'...
-   Compiling sc v0.2.3 (file:///home/tormol/p/rust/tiny-rust-executable/syscall.rs)
-
-+ rustc tinyrust.rs --crate-type lib -L syscall.rs/target/release -C relocation-model=static -O -C opt-level=z
++ cargo build --release --verbose
+    Updating git repository `https://github.com/AgustinCB/syscall.rs/`
+   Compiling sc v0.2.3 (https://github.com/AgustinCB/syscall.rs/#44546775)
+     Running `rustc --crate-name sc /home/tormol/.cargo/git/checkouts/syscall.rs-a441cc4b410d529b/4454677/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts --crate-type lib --emit=dep-info,metadata,link -C opt-level=z -C panic=abort -Clinker-plugin-lto -C metadata=35c3430f33082929 -C extra-filename=-35c3430f33082929 --out-dir /home/tormol/p/rust/tiny-rust-executable/target/release/deps -L dependency=/home/tormol/p/rust/tiny-rust-executable/target/release/deps --cap-lints allow -C relocation-model=static`
+   Compiling tiny-rust-executable v0.5.0 (/home/tormol/p/rust/tiny-rust-executable)
+     Running `rustc --crate-name tinyrust tinyrust.rs --error-format=json --json=diagnostic-rendered-ansi --crate-type lib --emit=dep-info,metadata,link -C opt-level=z -C panic=abort -Clinker-plugin-lto -C metadata=61b6ba1ff0efe210 -C extra-filename=-61b6ba1ff0efe210 --out-dir /home/tormol/p/rust/tiny-rust-executable/target/release/deps -L dependency=/home/tormol/p/rust/tiny-rust-executable/target/release/deps --extern sc=/home/tormol/p/rust/tiny-rust-executable/target/release/deps/libsc-35c3430f33082929.rmeta -C relocation-model=static`
+    Finished release [optimized] target(s) in 0.45s
 ++ ar t libtinyrust.rlib
 ++ grep '.o$'
 + OBJECT=tinyrust.tinyrust.3a1fbbbh-cgu.0.rcgu.o

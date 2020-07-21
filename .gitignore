@@ -1,7 +1,16 @@
+# cargo
+/target
+
+# pre-cargo
 /syscall.rs
+/libtinyrust.rlib
+
+# rlib extraction and other intermediate artefacts
+/*.o
+/*.rmeta
 /payload
 /payload.bin
-/tinyrust
 /tinyrust.ll
-/*.o
-/libtinyrust.rlib
+
+# final executable
+/tinyrust

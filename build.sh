@@ -2,7 +2,7 @@
 
 set -e
 
-for d in rustc git cargo ar ld objcopy nasm hexdump; do
+for d in rustc cargo ar ld objcopy nasm hexdump; do
     which $d >/dev/null || (echo "Can't find $d, needed to build"; exit 1)
 done
 
@@ -10,24 +10,13 @@ printf "Tested on rustc 1.46.0-nightly (346aec9b0 2020-07-11)\nYou have  "
 rustc --version
 echo
 
-if [ ! -d syscall.rs ]; then
-    git clone --depth=1 https://github.com/AgustinCB/syscall.rs
-    # a fork of https://github.com/japaric/syscall.rs with updated asm feature flag
-    (cd syscall.rs && cargo build --release)
-    echo
-fi
-
 set -x
 
-rustc tinyrust.rs --crate-type lib \
-    -L syscall.rs/target/release \
-    -C relocation-model=static \
-    -O \
-    -C opt-level=z
+cargo build --release --verbose
 
 # tinyrust.tinyrust.3a1fbbbh-cgu.0.rcgu.o
-OBJECT=$(ar t libtinyrust.rlib | grep '.o$')
-ar x libtinyrust.rlib "$OBJECT"
+OBJECT=$(ar t target/release/libtinyrust.rlib | grep '.o$')
+ar x target/release/libtinyrust.rlib "$OBJECT"
 
 objdump -dr "$OBJECT"
 echo
