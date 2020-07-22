@@ -1,5 +1,7 @@
 # Using Rust to make a 137-byte static AMD64 Linux binary
 
+[![Build Status](https://api.cirrus-ci.com/github/tormol/tiny-rust-executable.svg)](https://cirrus-ci.com/github/tormol/tiny-rust-executable)
+
 Requires nightly Rust because it uses the `sc` crate to make direct
 system calls.
 

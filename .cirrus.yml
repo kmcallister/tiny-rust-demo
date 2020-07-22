@@ -1,0 +1,15 @@
+task:
+  name: Linux amd64 nightly
+  container:
+    image: rustlang/rust:nightly
+    cpu: 1
+    memory: 1
+  setup_script:
+    - apt-get update
+    - apt-get install -yqq nasm bsdmainutils
+  build_script:
+    - ./build.sh
+  test_script:
+    - ./tinyrust
+    - test "$(./tinyrust)" == 'Hello!'
+    - test "$(wc -c < tinyrust)" -eq 137
