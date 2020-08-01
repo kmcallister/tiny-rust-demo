@@ -2,12 +2,16 @@
 
 [![Build Status](https://api.cirrus-ci.com/github/tormol/tiny-rust-executable.svg)](https://cirrus-ci.com/github/tormol/tiny-rust-executable)
 
-Requires nightly Rust because it uses the `sc` crate to make direct
-system calls.
-
 `elf.s` contains a custom ELF header, but no instructions.
 All of the machine code comes out of `rustc`.
 (While most of the operations originate from inline assembly, LLVM replaces the instructions with more compact ones!)
+
+This project is built by running the `./build.sh` script instead of `cargo build`: Making the binary this small requires post-processing steps which cargo doesn't support.  
+Requires nightly Rust because it uses inline assembly (through the `sc` crate) to make direct system calls.
+
+[Blog post about this demo](http://mainisusuallyafunction.blogspot.com/2015/01/151-byte-static-linux-binary-in-rust.html), by Keegan McAllister who originally created it.
+
+## Example
 
 ```sh
 $ ./build.sh
@@ -86,3 +90,7 @@ at your option.
 ### Contribution
 
 Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in the work by you, as defined in the Apache-2.0 license, shall be dual licensed as above, without any additional terms or conditions.
+
+## See Also
+
+* [A 99-byte x86 (32-bit) Go executable](https://github.com/xaionaro-go/tinyhelloworld)
