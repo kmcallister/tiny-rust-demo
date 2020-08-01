@@ -15,9 +15,10 @@ Tested on rustc 1.46.0-nightly (346aec9b0 2020-07-11)
 You have  rustc 1.46.0-nightly (346aec9b0 2020-07-11)
 
 + cargo build --release --verbose
-    Updating git repository `https://github.com/AgustinCB/syscall.rs/`
-   Compiling sc v0.2.3 (https://github.com/AgustinCB/syscall.rs/#44546775)
-     Running `rustc --crate-name sc /home/tormol/.cargo/git/checkouts/syscall.rs-a441cc4b410d529b/4454677/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts --crate-type lib --emit=dep-info,metadata,link -C opt-level=z -C panic=abort -Clinker-plugin-lto -C metadata=35c3430f33082929 -C extra-filename=-35c3430f33082929 --out-dir /home/tormol/p/rust/tiny-rust-executable/target/release/deps -L dependency=/home/tormol/p/rust/tiny-rust-executable/target/release/deps --cap-lints allow -C relocation-model=static`
+  Downloaded sc v0.2.3
+  Downloaded 1 crate (37.2 KB) in 0.71s
+   Compiling sc v0.2.3
+     Running `rustc --crate-name sc /home/tormol/.cargo/registry/src/github.com-1ecc6299db9ec823/sc-0.2.3/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts --crate-type lib --emit=dep-info,metadata,link -C opt-level=z -C panic=abort -Cembed-bitcode=no -C metadata=8fa96b43c9d094b0 -C extra-filename=-8fa96b43c9d094b0 --out-dir /home/tormol/p/rust/tiny-rust-demo/target/release/deps -L dependency=/home/tormol/p/rust/tiny-rust-demo/target/release/deps --cap-lints allow -C relocation-model=static`
    Compiling tiny-rust-executable v0.5.0 (/home/tormol/p/rust/tiny-rust-executable)
      Running `rustc --crate-name tinyrust tinyrust.rs --error-format=json --json=diagnostic-rendered-ansi --crate-type lib --emit=dep-info,metadata,link -C opt-level=z -C panic=abort -Clinker-plugin-lto -C metadata=61b6ba1ff0efe210 -C extra-filename=-61b6ba1ff0efe210 --out-dir /home/tormol/p/rust/tiny-rust-executable/target/release/deps -L dependency=/home/tormol/p/rust/tiny-rust-executable/target/release/deps --extern sc=/home/tormol/p/rust/tiny-rust-executable/target/release/deps/libsc-35c3430f33082929.rmeta -C relocation-model=static`
     Finished release [optimized] target(s) in 0.45s

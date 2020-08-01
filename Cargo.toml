@@ -1,6 +1,6 @@
 [package]
 name = "tiny-rust-executable"
-version = "0.5.0"
+version = "0.5.1"
 authors = [
     "Keegan McAllister <mcallister.keegan@gmail.com>",
     "Melvin Kicchi <melvin@likes.pounc.es>",
@@ -27,5 +27,4 @@ lto = false # enabling LTO breaks objdump and requires other flags to ld
 panic = "abort"
 
 [dependencies]
-# fork of https://github.com/japaric/syscall.rs (sc 0.2.2) with updated feature flags
-sc = {git = "https://github.com/AgustinCB/syscall.rs/"}
+sc = "0.2.3"
