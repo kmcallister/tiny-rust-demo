@@ -1,0 +1,20 @@
+task:
+  name: Linux amd64 nightly
+  container:
+    image: rustlang/rust:nightly
+    cpu: 1
+    memory: 1
+  cargo_cache:
+    folder: $HOME/.cargo/registry
+    fingerprint_script: cat Cargo.lock 2> /dev/null || true
+  setup_script:
+    - apt-get update
+    - apt-get install -yqq nasm bsdmainutils
+  build_script:
+    - ./build.sh
+  test_script:
+    - ./tinyrust
+    - test "$(./tinyrust)" == 'Hello!'
+    - test "$(wc -c < tinyrust)" -eq 137
+  before_cache_script:
+    - rm -rf $HOME/.cargo/registry/index

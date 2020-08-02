@@ -1,0 +1,30 @@
+[package]
+name = "tiny-rust-executable"
+version = "0.5.1"
+authors = [
+    "Keegan McAllister <mcallister.keegan@gmail.com>",
+    "Melvin Kicchi <melvin@likes.pounc.es>",
+    "Hiroki Noda <kubo39@gmail.com>",
+    "Torbjørn Birch Moltu <t.b.moltu@lyse.net>"
+]
+license = "Apache-2.0 OR MIT"
+edition = "2015"
+
+[lib]
+name = "tinyrust"
+path = "tinyrust.rs"
+
+[profile.dev]
+opt-level = "z"
+overflow-checks = false
+lto = false
+panic = "abort"
+
+[profile.release]
+opt-level = "z"
+overflow-checks = false
+lto = false # enabling LTO breaks objdump and requires other flags to ld
+panic = "abort"
+
+[dependencies]
+sc = "0.2.3"
